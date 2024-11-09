@@ -1,11 +1,17 @@
 # DnD Table
-
+## DiceRoller
+Returns random number between 1 and after d number (d4, d6, etc.) <br>
+For example:
+``` java
+D8 d8;
+d8.roll()//returns random number from 1 to 8
+```
 ## TODO
 
 ### backend
 - [ ] sessions
 - [ ] auth
-- [ ] dice roller
+- [x] dice roller
 - [ ] saving each game's progress
 
 ### database
