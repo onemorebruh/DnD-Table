@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//useless for now
 @Service
 public class MessageSubscriber implements MessageListener {
 

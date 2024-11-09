@@ -34,11 +34,11 @@ public class RedisRepositoryImpl implements IRedisRepository {
         hashOperations.delete(KEY, id);
     }
 
-    public RedisSession findMovie(final String id){
+    public RedisSession findOne(final String id){
         return (RedisSession) hashOperations.get(KEY, id);
     }
 
-    public Map<Object, Object> findAllMovies(){
+    public Map findAll(){
         return hashOperations.entries(KEY);
     }
 }

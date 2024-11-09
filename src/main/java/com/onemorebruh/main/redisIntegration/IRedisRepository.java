@@ -3,8 +3,8 @@ package com.onemorebruh.main.redisIntegration;
 import java.util.Map;
 
 public interface IRedisRepository {
-        Map<Object, Object> findAllMovies();
+        Map<Object, Object> findAll();
         void add(RedisSession movie);
         void delete(String id);
-        RedisSession findMovie(String id);
+        RedisSession findOne(String id);
 }
