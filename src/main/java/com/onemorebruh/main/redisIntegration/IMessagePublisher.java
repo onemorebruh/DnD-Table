@@ -1,5 +1,5 @@
 package com.onemorebruh.main.redisIntegration;
 
-public interface MessagePublisher {
+public interface IMessagePublisher {
     void publish(final String message);
 }

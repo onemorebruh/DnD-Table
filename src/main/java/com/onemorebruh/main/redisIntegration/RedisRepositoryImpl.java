@@ -10,26 +10,34 @@ import java.util.Map;
 
 @Repository
 public class RedisRepositoryImpl implements IRedisRepository {
-    private static final String KEY = "Movie";
-    private RedisTemplate<String, Object> redisTemplate;
+    private static final String KEY = "Session";
+    private final RedisTemplate<String, Object> redisTemplate;
     private HashOperations hashOperations;
+
     @Autowired
     public RedisRepositoryImpl(RedisTemplate<String, Object> redisTemplate){
         this.redisTemplate = redisTemplate;
     }
+
+
     @PostConstruct
     private void init(){
         hashOperations = redisTemplate.opsForHash();
     }
+
+
     public void add(final RedisSession rsession) {
-        hashOperations.put(KEY, rsession.getId(), rsession.getName());
+        hashOperations.put(KEY, rsession.getKey(), rsession.getValue());
     }
+
     public void delete(final String id) {
         hashOperations.delete(KEY, id);
     }
+
     public RedisSession findMovie(final String id){
         return (RedisSession) hashOperations.get(KEY, id);
     }
+
     public Map<Object, Object> findAllMovies(){
         return hashOperations.entries(KEY);
     }

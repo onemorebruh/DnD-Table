@@ -6,7 +6,7 @@ import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessagePublisherImpl implements MessagePublisher {
+public class IMessagePublisherImpl implements IMessagePublisher {
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -14,9 +14,8 @@ public class MessagePublisherImpl implements MessagePublisher {
     private ChannelTopic topic;
 
 
-    public MessagePublisherImpl() {
-    }
-    public MessagePublisherImpl(final RedisTemplate<String, Object> redisTemplate, final ChannelTopic topic) {
+
+    public IMessagePublisherImpl(final RedisTemplate<String, Object> redisTemplate, final ChannelTopic topic) {
         this.redisTemplate = redisTemplate;
         this.topic = topic;
     }
