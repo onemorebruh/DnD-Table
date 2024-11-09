@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class D8 extends DiceRoll {
     @Override
-    int roll() {
+    public int roll() {
         Random random = new Random();
         return random.nextInt(1, 9);
     }
