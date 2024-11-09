@@ -15,8 +15,8 @@ d8.roll()//returns random number from 1 to 8
 - [ ] saving each game's progress
 
 ### database
-- [ ] roles
-- [ ] users
+- [x] roles
+- [x] users
 
 ### frontend
 - [ ] implement canvas with movable objects
