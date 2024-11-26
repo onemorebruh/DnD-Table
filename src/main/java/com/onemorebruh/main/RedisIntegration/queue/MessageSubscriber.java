@@ -1,4 +1,4 @@
-package com.onemorebruh.main.redisIntegration;
+package com.onemorebruh.main.RedisIntegration.queue;
 
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;

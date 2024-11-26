@@ -1,18 +1,20 @@
-package com.onemorebruh.main.redisIntegration;
+package com.onemorebruh.main.RedisIntegration.repository;
 
+import com.onemorebruh.main.RedisIntegration.model.RedisSession;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.Map;
-
 @Repository
 public class RedisRepositoryImpl implements IRedisRepository {
-    private static final String KEY = "Session";
+    @Value("spring.redis.secret") //TODO use actual value from properties
+    private static final String SECRET = "Session";
+
     private final RedisTemplate<String, Object> redisTemplate;
-    private HashOperations hashOperations;
+    private HashOperations<String, String, Object> hashOperations;
 
     @Autowired
     public RedisRepositoryImpl(RedisTemplate<String, Object> redisTemplate){
@@ -26,19 +28,16 @@ public class RedisRepositoryImpl implements IRedisRepository {
     }
 
 
-    public void add(final RedisSession rsession) {
-        hashOperations.put(KEY, rsession.getKey(), rsession.getValue());
+    public void add(final RedisSession rSession) {
+        hashOperations.put(SECRET, rSession.getKey(), rSession.getValue());
     }
 
     public void delete(final String id) {
-        hashOperations.delete(KEY, id);
+        hashOperations.delete(SECRET, id);
     }
 
-    public RedisSession findOne(final String id){
-        return (RedisSession) hashOperations.get(KEY, id);
+    public String findOne(final String id){
+        return (String) hashOperations.get(SECRET, id);
     }
 
-    public Map findAll(){
-        return hashOperations.entries(KEY);
-    }
 }

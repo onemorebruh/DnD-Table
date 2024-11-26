@@ -1,5 +1,8 @@
-package com.onemorebruh.main.redisIntegration;
+package com.onemorebruh.main.RedisIntegration.config;
 
+import com.onemorebruh.main.RedisIntegration.queue.MessagePublisherImpl;
+import com.onemorebruh.main.RedisIntegration.queue.MessageSubscriber;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +18,18 @@ import org.springframework.data.redis.serializer.GenericToStringSerializer;
 @ComponentScan("com.onemorebruh.main")
 public class RedisConfig {
 
+
+    @Value("${spring.redis.host}")
+    private String redisHost;
+
+    @Value("${spring.redis.port}")
+    private int redisPort;
+
+    @Value("${spring.redis.password}")
+    private String redisPassword;
+
+    @Value("${spring.redis.user}")
+    private String redisUser;
 
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
@@ -46,3 +61,9 @@ public class RedisConfig {
     }
 
 }
+
+
+/*
+System.setProperty("https.proxyHost", "proxy.address.com");
+System.setProperty("https.proxyPort", "8080");
+ */
