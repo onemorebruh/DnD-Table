@@ -3,6 +3,7 @@
 Returns random number between 1 and after d number (d4, d6, etc.) <br>
 For example:
 ``` java
+
 D8 d8 = new D8();
 d8.roll()//returns random number from 1 to 8
 ```
@@ -27,6 +28,7 @@ repository.findOne(key);
 reposityry.delete(key);
 ```
 
+
 ## TODO
 
 ### backend
@@ -37,8 +39,8 @@ reposityry.delete(key);
 - [ ] saving each game's progress
 
 ### database
-- [ ] roles
-- [ ] users
+- [x] roles
+- [x] users
 
 ### frontend
 - [ ] implement canvas with movable objects
